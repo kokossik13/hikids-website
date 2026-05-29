@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hi, Kids! — Студия английского и клуб развития в Краснодаре</title>
+<meta name="description" content="Hi, Kids! — уютная студия английского языка и клуб развития в Краснодаре. Английский, шахматы, ИЗО и подготовка к школе для детей от 3 лет. Первое занятие бесплатно." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👋</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --blue:#4F8EF7;
+    --blue-dark:#3B73D4;
+    --coral:#FF6B6B;
+    --coral-dark:#E85555;
+    --yellow:#FFD166;
+    --yellow-dark:#F0B93F;
+    --green:#06D6A0;
+    --green-dark:#05B488;
+    --bg:#F7F9FF;
+    --ink:#1A1F36;
+    --ink-soft:#5A6079;
+    --card:#FFFFFF;
+    --shadow-card:0 4px 24px rgba(79,142,247,0.10);
+    --shadow-hover:0 16px 40px rgba(79,142,247,0.22);
+    --radius:20px;
+    --radius-lg:28px;
+    --maxw:1180px;
+    --nav-h:74px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:84px;}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4,.display{font-family:'Nunito',sans-serif;line-height:1.12;letter-spacing:-0.01em;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  section{position:relative;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+
+  /* ============ EYEBROW + HEADINGS ============ */
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Nunito',sans-serif;font-weight:800;
+    font-size:14px;letter-spacing:0.06em;text-transform:uppercase;
+    color:var(--blue);
+    background:rgba(79,142,247,0.10);
+    padding:7px 16px;border-radius:999px;
+    margin-bottom:18px;
+  }
+  .section-title{font-size:clamp(30px,4.4vw,46px);font-weight:900;}
+  .section-lead{font-size:18px;color:var(--ink-soft);max-width:620px;margin-top:14px;}
+  .center{text-align:center;}
+  .center .section-lead{margin-left:auto;margin-right:auto;}
+
+  /* ============ BUTTONS ============ */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    font-family:'Nunito',sans-serif;font-weight:800;font-size:16px;
+    padding:15px 28px;border-radius:999px;border:none;cursor:pointer;
+    transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s,background .2s;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--blue);color:#fff;box-shadow:0 8px 20px rgba(79,142,247,0.35);}
+  .btn-primary:hover{background:var(--blue-dark);transform:translateY(-3px);box-shadow:0 14px 28px rgba(79,142,247,0.45);}
+  .btn-coral{background:var(--coral);color:#fff;box-shadow:0 8px 20px rgba(255,107,107,0.35);}
+  .btn-coral:hover{background:var(--coral-dark);transform:translateY(-3px);box-shadow:0 14px 28px rgba(255,107,107,0.45);}
+  .btn-ghost{background:#fff;color:var(--blue);border:2px solid rgba(79,142,247,0.30);}
+  .btn-ghost:hover{border-color:var(--blue);transform:translateY(-3px);box-shadow:var(--shadow-card);}
+  .btn-block{width:100%;}
+
+  /* ============ NAVBAR ============ */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    height:var(--nav-h);
+    transition:background .3s,box-shadow .3s,height .3s;
+  }
+  header.nav.scrolled{
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(12px);
+    box-shadow:0 2px 20px rgba(79,142,247,0.10);
+  }
+  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;}
+  .brand{display:flex;align-items:center;gap:12px;font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;}
+  .brand img{width:44px;height:44px;border-radius:50%;box-shadow:0 2px 10px rgba(26,31,54,0.12);}
+  .brand .brand-sub{display:block;font-size:11px;font-weight:700;color:var(--ink-soft);letter-spacing:0.04em;text-transform:uppercase;margin-top:-2px;}
+  nav.links{display:flex;align-items:center;gap:4px;}
+  nav.links a{font-family:'Nunito',sans-serif;font-weight:700;font-size:15px;color:var(--ink);padding:9px 14px;border-radius:999px;transition:background .2s,color .2s;}
+  nav.links a:hover{background:rgba(79,142,247,0.10);color:var(--blue);}
+  .nav-cta{display:flex;align-items:center;gap:12px;}
+  .nav-cta .btn{padding:11px 20px;font-size:15px;}
+
+  .burger{display:none;width:46px;height:46px;border:none;background:rgba(79,142,247,0.10);border-radius:14px;cursor:pointer;position:relative;}
+  .burger span{position:absolute;left:13px;right:13px;height:2.5px;background:var(--blue);border-radius:2px;transition:transform .3s,opacity .2s,top .3s;}
+  .burger span:nth-child(1){top:16px;}
+  .burger span:nth-child(2){top:22px;}
+  .burger span:nth-child(3){top:28px;}
+  .burger.open span:nth-child(1){top:22px;transform:rotate(45deg);}
+  .burger.open span:nth-child(2){opacity:0;}
+  .burger.open span:nth-child(3){top:22px;transform:rotate(-45deg);}
+
+  .mobile-menu{
+    position:fixed;top:var(--nav-h);left:0;right:0;z-index:99;
+    background:#fff;box-shadow:0 12px 30px rgba(26,31,54,0.12);
+    transform:translateY(-120%);transition:transform .35s cubic-bezier(.22,1,.36,1);
+    padding:14px 24px 26px;
+  }
+  .mobile-menu.open{transform:translateY(0);}
+  .mobile-menu a{display:block;font-family:'Nunito',sans-serif;font-weight:700;font-size:18px;padding:13px 8px;border-bottom:1px solid #eef1f8;}
+  .mobile-menu .btn{margin-top:18px;}
+
+  /* ============ HERO ============ */
+  .hero{padding:calc(var(--nav-h) + 28px) 0 64px;overflow:hidden;}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  @keyframes wave{0%,60%,100%{transform:rotate(0)}10%{transform:rotate(16deg)}20%{transform:rotate(-8deg)}30%{transform:rotate(16deg)}40%{transform:rotate(-4deg)}50%{transform:rotate(10deg)}}
+
+  .hero-stage{position:relative;max-width:var(--maxw);margin:0 auto;padding:0 24px;min-height:clamp(660px,80vw,800px);display:flex;flex-direction:column;align-items:center;}
+  .hero-center{position:relative;z-index:5;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:520px;margin:0 auto;}
+  .hero-logo{width:168px;height:168px;border-radius:50%;background:#fff;box-shadow:0 18px 46px rgba(79,142,247,0.18);padding:6px;animation:float 6s ease-in-out infinite;}
+  .hero-logo img{width:100%;height:100%;border-radius:50%;object-fit:cover;}
+  .hero h1{font-size:clamp(44px,8vw,84px);font-weight:900;margin-top:22px;line-height:1;white-space:nowrap;}
+  .hero h1 .wave{display:inline-block;animation:wave 2.6s ease-in-out infinite;transform-origin:70% 70%;}
+  .hero .welcome{font-family:'Nunito',sans-serif;font-weight:900;font-size:clamp(28px,5vw,50px);color:var(--blue);margin-top:14px;line-height:1.05;letter-spacing:-0.01em;white-space:nowrap;}
+  .hero p.sub{font-size:clamp(16px,2.1vw,20px);color:var(--ink-soft);margin:22px auto 0;max-width:520px;text-wrap:balance;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:32px;}
+
+  /* decorative kid photos — flank the logo/heading in four corners */
+  .hero-kids{position:absolute;inset:0;z-index:1;}
+  .kid{position:absolute;width:clamp(218px,31.5vw,429px);}
+  .kid > img{width:100%;height:auto;display:block;filter:drop-shadow(0 18px 30px rgba(26,31,54,0.14));}
+  .k-tl{top:-8px;left:-12px;animation:float 6s ease-in-out infinite;}
+  .k-tr{top:-20px;right:-12px;animation:float 6.6s ease-in-out infinite .4s;}
+  .k-bl{bottom:8px;left:-8px;animation:float 7s ease-in-out infinite .8s;}
+  .k-br{bottom:-2px;right:-10px;animation:float 6.3s ease-in-out infinite 1.1s;}
+
+  /* scattered kid accents — only shown on mobile, peeking from section edges */
+  .scatter-kid{display:none;position:absolute;z-index:1;width:118px;height:auto;pointer-events:none;filter:drop-shadow(0 12px 22px rgba(26,31,54,0.14));}
+
+  /* hero feature chips */
+  .hero-chips{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:var(--maxw);margin:30px auto 0;padding:0 24px;}
+  .hchip{display:flex;align-items:center;gap:11px;background:#fff;border:1px solid #eef1f8;border-radius:18px;padding:15px 20px;font-family:'Nunito',sans-serif;font-weight:800;font-size:15px;box-shadow:var(--shadow-card);}
+  .hchip .ico{font-size:24px;line-height:1;}
+
+  .hero-bg-dots{position:absolute;inset:0;z-index:0;background-image:radial-gradient(rgba(79,142,247,0.12) 1.6px,transparent 1.6px);background-size:30px 30px;-webkit-mask-image:radial-gradient(ellipse 60% 60% at 50% 40%,#000,transparent);mask-image:radial-gradient(ellipse 60% 60% at 50% 40%,#000,transparent);}
+
+  /* ============ WAVE DIVIDER ============ */
+  .wave-divider{display:block;width:100%;height:auto;margin-bottom:-2px;}
+  .wave-divider.flip{transform:rotate(180deg);margin-top:-2px;margin-bottom:0;}
+
+  /* ============ ABOUT ============ */
+  .about{background:#fff;padding:80px 0;}
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;align-items:center;}
+  .about-text p{font-size:18px;color:var(--ink-soft);margin-bottom:18px;}
+  .about-text p strong{color:var(--ink);}
+  .about-visual{position:relative;background:linear-gradient(135deg,#eaf2ff,#f5f9ff);border-radius:var(--radius-lg);padding:38px;display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .mini-stat{background:#fff;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow-card);text-align:center;}
+  .mini-stat .num{font-family:'Nunito';font-weight:900;font-size:40px;line-height:1;color:var(--blue);}
+  .mini-stat:nth-child(2) .num{color:var(--coral);}
+  .mini-stat:nth-child(3) .num{color:var(--green);}
+  .mini-stat:nth-child(4) .num{color:var(--yellow-dark);}
+  .mini-stat .lbl{font-size:14px;color:var(--ink-soft);margin-top:8px;font-weight:600;}
+
+  /* ============ COURSES ============ */
+  .courses{padding:80px 0;position:relative;overflow:hidden;}
+  .courses-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:46px;}
+  .course-card{background:var(--card);border-radius:var(--radius-lg);padding:30px 26px;box-shadow:var(--shadow-card);position:relative;overflow:hidden;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;display:flex;flex-direction:column;}
+  .course-card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.22,1,.36,1);}
+  .course-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-hover);}
+  .course-card:hover::before{transform:scaleX(1);}
+  .course-icon{width:74px;height:74px;border-radius:20px;display:grid;place-items:center;font-size:38px;background:var(--accent-soft);margin-bottom:20px;}
+  .course-card h3{font-size:22px;font-weight:800;margin-bottom:6px;}
+  .course-meta{font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:16px;}
+  .course-card ul{list-style:none;margin-bottom:18px;display:flex;flex-direction:column;gap:9px;}
+  .course-card ul li{position:relative;padding-left:24px;font-size:14.5px;color:var(--ink-soft);}
+  .course-card ul li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:50%;background:var(--accent);}
+  .course-price{font-family:'Nunito';font-weight:900;font-size:19px;margin:auto 0 18px;}
+  .course-price span{font-size:13px;font-weight:600;color:var(--ink-soft);display:block;}
+  .course-card .btn{margin-top:auto;background:var(--accent);color:#fff;}
+  .course-card .btn:hover{filter:brightness(.93);transform:translateY(-2px);}
+
+  .c-blue{--accent:var(--blue);--accent-soft:rgba(79,142,247,0.12);}
+  .c-green{--accent:var(--green);--accent-soft:rgba(6,214,160,0.13);}
+  .c-yellow{--accent:var(--yellow-dark);--accent-soft:rgba(255,209,102,0.22);}
+  .c-coral{--accent:var(--coral);--accent-soft:rgba(255,107,107,0.13);}
+
+  /* ============ WHY ============ */
+  .why{background:#fff;padding:80px 0;position:relative;overflow:hidden;}
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px;}
+  .why-card{background:var(--bg);border-radius:var(--radius);padding:28px;transition:transform .3s,box-shadow .3s;border:1px solid #eef1fb;}
+  .why-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-card);background:#fff;}
+  .why-card .ico{font-size:34px;margin-bottom:14px;display:block;}
+  .why-card h4{font-size:18px;font-weight:800;margin-bottom:7px;}
+  .why-card p{font-size:15px;color:var(--ink-soft);}
+
+  /* ============ SUMMER ============ */
+  .summer{padding:30px 0 80px;}
+  .summer-banner{
+    background:linear-gradient(135deg,#FFD166 0%,#FF9F66 55%,#FF6B6B 100%);
+    border-radius:var(--radius-lg);padding:56px;color:#fff;position:relative;overflow:hidden;
+    box-shadow:0 24px 60px rgba(255,159,102,0.35);
+  }
+  .summer-banner::after{content:"☀️";position:absolute;font-size:300px;right:-40px;top:-70px;opacity:.18;transform:rotate(-10deg);}
+  .summer-banner .eyebrow{background:rgba(255,255,255,0.25);color:#fff;}
+  .summer-banner h2{font-size:clamp(28px,4vw,44px);font-weight:900;position:relative;z-index:2;}
+  .summer-banner .tagline{font-size:20px;font-weight:700;margin:14px 0 26px;font-family:'Nunito';position:relative;z-index:2;}
+  .summer-info{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px;position:relative;z-index:2;}
+  .summer-info .pill{background:rgba(255,255,255,0.20);border-radius:14px;padding:12px 18px;font-weight:700;font-family:'Nunito';backdrop-filter:blur(4px);}
+  .summer-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;position:relative;z-index:2;margin-bottom:30px;}
+  .summer-list li{list-style:none;display:flex;gap:11px;align-items:flex-start;font-size:16.5px;font-weight:600;}
+  .summer-list li .check{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:#fff;color:var(--green);display:grid;place-items:center;font-weight:900;font-size:15px;}
+  .summer-cta{display:flex;align-items:center;gap:18px;flex-wrap:wrap;position:relative;z-index:2;}
+  .summer-cta .promo{font-family:'Nunito';font-weight:800;font-size:16px;}
+  .summer-banner .btn-white{background:#fff;color:var(--coral-dark);box-shadow:0 8px 20px rgba(0,0,0,0.12);}
+  .summer-banner .btn-white:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,0.18);}
+
+  /* ============ PRICES ============ */
+  .prices{padding:80px 0;background:#fff;}
+  .price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:46px;}
+  .price-card{background:var(--accent-tint);border:2px solid var(--accent-soft);border-radius:var(--radius-lg);padding:0 0 28px;overflow:hidden;transition:transform .3s,box-shadow .3s;position:relative;}
+  .price-card::before{content:"";display:block;height:8px;background:var(--accent);}
+  .price-card:hover{transform:translateY(-6px);box-shadow:0 16px 36px var(--accent-shadow);}
+  .price-card .p-icon{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;font-size:30px;background:var(--accent);box-shadow:0 8px 18px var(--accent-shadow);margin:24px 26px 16px;}
+  .price-card h4{font-size:19px;font-weight:800;padding:0 26px;}
+  .price-card .p-type{font-size:13.5px;color:var(--ink-soft);margin:4px 0 18px;padding:0 26px;}
+  .price-old{font-size:18px;color:var(--ink-soft);opacity:.7;text-decoration:line-through;font-family:'Nunito';font-weight:700;padding:0 26px;}
+  .price-now{font-family:'Nunito';font-weight:900;font-size:34px;line-height:1.1;color:var(--accent-ink);padding:0 26px;}
+  .price-note{font-size:14px;color:var(--ink-soft);margin-top:12px;padding:0 26px;}
+  .price-badge{position:absolute;top:20px;right:18px;background:var(--accent);color:#fff;font-family:'Nunito';font-weight:800;font-size:12px;padding:5px 11px;border-radius:999px;box-shadow:0 6px 14px var(--accent-shadow);z-index:2;}
+  .p-blue{--accent:var(--blue);--accent-ink:var(--blue-dark);--accent-tint:#eef4ff;--accent-soft:#cfe0ff;--accent-shadow:rgba(79,142,247,0.32);}
+  .p-yellow{--accent:var(--yellow-dark);--accent-ink:#b7841f;--accent-tint:#fff7e6;--accent-soft:#ffe7b0;--accent-shadow:rgba(240,185,63,0.36);}
+  .p-coral{--accent:var(--coral);--accent-ink:var(--coral-dark);--accent-tint:#fff0f0;--accent-soft:#ffd2d2;--accent-shadow:rgba(255,107,107,0.32);}
+  .p-green{--accent:var(--green);--accent-ink:var(--green-dark);--accent-tint:#e7fbf4;--accent-soft:#b8f0df;--accent-shadow:rgba(6,214,160,0.30);}
+
+  /* ============ WORKSHOPS ============ */
+  .workshops{padding:80px 0;}
+  .workshop-box{background:linear-gradient(135deg,#fff,#fff6f6);border-radius:var(--radius-lg);padding:46px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;box-shadow:var(--shadow-card);border:1px solid rgba(255,107,107,0.18);}
+  .workshop-box h2{font-size:clamp(26px,3.4vw,38px);font-weight:900;margin-bottom:14px;}
+  .workshop-box p{font-size:17px;color:var(--ink-soft);margin-bottom:14px;}
+  .workshop-feats{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
+  .workshop-feats span{background:rgba(255,107,107,0.10);color:var(--coral-dark);font-weight:700;font-size:14px;padding:8px 15px;border-radius:999px;}
+  .workshop-art{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .wa{border-radius:var(--radius);padding:26px;color:#fff;font-family:'Nunito';font-weight:800;display:flex;flex-direction:column;justify-content:space-between;min-height:130px;}
+  .wa .big{font-size:40px;}
+  .wa1{background:linear-gradient(135deg,#FF6B6B,#FF9F66);}
+  .wa2{background:linear-gradient(135deg,#4F8EF7,#6BA8FF);}
+  .wa3{background:linear-gradient(135deg,#06D6A0,#3BE0B8);}
+  .wa4{background:linear-gradient(135deg,#FFD166,#FFB347);}
+
+  /* ============ LOCATION ============ */
+  .location{padding:80px 0;background:#fff;}
+  .loc-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;margin-top:46px;align-items:stretch;}
+  .addr-card{background:var(--bg);border-radius:var(--radius);padding:26px;display:flex;gap:16px;border:1px solid #eef1fb;margin-bottom:18px;transition:transform .25s,box-shadow .25s;}
+  .addr-card:hover{transform:translateX(4px);box-shadow:var(--shadow-card);}
+  .addr-card .pin{flex-shrink:0;width:48px;height:48px;border-radius:14px;background:rgba(79,142,247,0.12);display:grid;place-items:center;font-size:24px;}
+  .addr-card:nth-child(2) .pin{background:rgba(255,107,107,0.12);}
+  .addr-card h4{font-size:17px;font-weight:800;margin-bottom:4px;}
+  .addr-card p{font-size:15px;color:var(--ink-soft);}
+  .map-frame{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);min-height:380px;border:1px solid #eef1fb;}
+  .map-frame iframe{width:100%;height:100%;min-height:380px;border:0;display:block;}
+
+  /* ============ CONTACTS ============ */
+  .contacts{padding:80px 0;position:relative;overflow:hidden;}
+  .contacts-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:46px;align-items:start;}
+  .contact-actions{display:flex;flex-direction:column;gap:14px;}
+  .contact-btn{display:flex;align-items:center;gap:16px;background:#fff;border-radius:var(--radius);padding:18px 22px;box-shadow:var(--shadow-card);transition:transform .25s,box-shadow .25s;}
+  .contact-btn:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);}
+  .contact-btn .ci{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;font-size:24px;color:#fff;flex-shrink:0;}
+  .contact-btn .ct{font-size:13px;color:var(--ink-soft);font-weight:600;}
+  .contact-btn .cv{font-family:'Nunito';font-weight:800;font-size:18px;}
+  .ci-blue{background:var(--blue);} .ci-green{background:var(--green);} .ci-coral{background:var(--coral);} .ci-yellow{background:var(--yellow-dark);}
+
+  .form-card{background:#fff;border-radius:var(--radius-lg);padding:36px;box-shadow:var(--shadow-card);}
+  .form-card h3{font-size:24px;font-weight:900;margin-bottom:6px;}
+  .form-card .fc-sub{font-size:15px;color:var(--ink-soft);margin-bottom:24px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-size:14px;font-weight:700;font-family:'Nunito';margin-bottom:7px;}
+  .field input,.field select{width:100%;padding:14px 16px;border:2px solid #e7ecf8;border-radius:14px;font-family:'Inter';font-size:15px;background:#fbfcff;transition:border-color .2s,box-shadow .2s;}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(79,142,247,0.12);}
+  .field.error input,.field.error select{border-color:var(--coral);}
+  .field .err-msg{color:var(--coral-dark);font-size:13px;margin-top:5px;display:none;font-weight:600;}
+  .field.error .err-msg{display:block;}
+
+  /* ============ FOOTER ============ */
+  footer.site{background:var(--ink);color:#cdd2e6;padding:54px 0 28px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+  .footer-brand{display:flex;align-items:center;gap:13px;margin-bottom:16px;}
+  .footer-brand img{width:50px;height:50px;border-radius:50%;}
+  .footer-brand .fb-name{font-family:'Nunito';font-weight:900;font-size:20px;color:#fff;}
+  footer.site p{font-size:15px;color:#9aa0bd;max-width:340px;}
+  footer.site h5{font-family:'Nunito';font-weight:800;font-size:16px;color:#fff;margin-bottom:16px;}
+  footer.site ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+  footer.site ul a,footer.site ul li{font-size:15px;color:#9aa0bd;transition:color .2s;}
+  footer.site ul a:hover{color:#fff;}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.10);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:14px;color:#7e84a3;}
+
+  /* ============ MODAL ============ */
+  .modal-overlay{position:fixed;inset:0;background:rgba(26,31,54,0.55);backdrop-filter:blur(4px);z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .3s;}
+  .modal-overlay.open{opacity:1;pointer-events:auto;}
+  .modal{background:#fff;border-radius:var(--radius-lg);padding:46px 40px;max-width:440px;width:100%;text-align:center;transform:scale(.9) translateY(20px);transition:transform .35s cubic-bezier(.22,1,.36,1);}
+  .modal-overlay.open .modal{transform:scale(1) translateY(0);}
+  .modal .m-emoji{font-size:64px;animation:pop .5s cubic-bezier(.22,1.5,.36,1);}
+  @keyframes pop{0%{transform:scale(0)}100%{transform:scale(1)}}
+  .modal h3{font-size:26px;font-weight:900;margin:14px 0 10px;}
+  .modal p{color:var(--ink-soft);font-size:16px;margin-bottom:26px;}
+
+  /* ============ REVEAL ANIM ============ */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  .reveal.d1{transition-delay:.08s;} .reveal.d2{transition-delay:.16s;} .reveal.d3{transition-delay:.24s;} .reveal.d4{transition-delay:.32s;}
+
+  /* ============ RESPONSIVE ============ */
+  @media(max-width:980px){
+    .courses-grid{grid-template-columns:repeat(2,1fr);}
+    .price-grid{grid-template-columns:repeat(2,1fr);}
+    .why-grid{grid-template-columns:repeat(2,1fr);}
+    .about-grid,.workshop-box,.loc-grid,.contacts-grid{grid-template-columns:1fr;}
+    .workshop-art{grid-template-columns:repeat(4,1fr);}
+    /* hero corners hold here — just nudge photos tighter to the edges */
+    .k-tl{left:-22px;} .k-tr{right:-22px;} .k-bl{left:-20px;bottom:26px;} .k-br{right:-20px;bottom:16px;}
+    .hero-chips{grid-template-columns:repeat(2,1fr);}
+  }
+  /* mobile: hero keeps ONLY the top-left girl (beside the content); the other three scatter down the page */
+  @media(max-width:720px){
+    .hero-stage{min-height:0;}
+    .hero-kids{position:absolute;inset:0;}
+    .k-tr,.k-bl,.k-br{display:none;}
+    .k-tl{display:block;width:clamp(124px,36vw,168px);top:84px;left:-30px;bottom:auto;z-index:1;animation:float 6s ease-in-out infinite;}
+    .scatter-kid{display:block;}
+  }
+  @media(max-width:768px){
+    nav.links,.nav-cta{display:none;}
+    .burger{display:block;}
+    .wrap{padding:0 18px;}
+    .hero{padding:calc(var(--nav-h) + 22px) 0 48px;}
+    .hero-stage{padding:0 18px;}
+    .hero-logo{width:132px;height:132px;}
+    .hero-actions{width:100%;}
+    .hero-actions .btn{width:100%;}
+    .hero-chips{grid-template-columns:1fr;gap:12px;padding:0 18px;}
+    .courses-grid,.price-grid,.why-grid,.summer-list{grid-template-columns:1fr;}
+    .summer-banner,.workshop-box,.form-card{padding:30px 22px;}
+    .about-visual{padding:24px;}
+    .workshop-art{grid-template-columns:repeat(2,1fr);}
+    .map-frame iframe,.map-frame{min-height:250px;}
+    .about,.courses,.why,.prices,.workshops,.location,.contacts{padding:56px 0;}
+  }
+  @media(max-width:540px){
+    .scatter-kid{width:104px;}
+  }
+  @media(max-width:420px){
+    .summer-info{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="brand">
+      <img src="assets/hikids-logo.jpg" alt="Hi, Kids! логотип" />
+      <span>Hi, Kids!<span class="brand-sub">студия английского</span></span>
+    </a>
+    <nav class="links">
+      <a href="#about">О нас</a>
+      <a href="#courses">Направления</a>
+      <a href="#summer">Летний клуб</a>
+      <a href="#prices">Цены</a>
+      <a href="#location">Контакты</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contacts" class="btn btn-primary">Пробный урок</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">О нас</a>
+  <a href="#courses">Направления</a>
+  <a href="#summer">☀️ Летний клуб</a>
+  <a href="#prices">Цены</a>
+  <a href="#workshops">Мастер-классы</a>
+  <a href="#location">Как нас найти</a>
+  <a href="#contacts" class="btn btn-primary btn-block">Записаться на пробный урок</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero" data-screen-label="Hero">
+  <div class="hero-bg-dots"></div>
+  <div class="hero-stage">
+    <div class="hero-kids" aria-hidden="true">
+      <figure class="kid k-tl reveal"><img src="assets/photo-tl-sm.png" alt="" /></figure>
+      <figure class="kid k-tr reveal d1"><img src="assets/photo-tr-sm.png" alt="" /></figure>
+      <figure class="kid k-bl reveal d2"><img src="assets/photo-bl-sm.png" alt="" /></figure>
+      <figure class="kid k-br reveal d3"><img src="assets/photo-br-sm.png" alt="" /></figure>
+    </div>
+    <div class="hero-center reveal">
+      <div class="hero-logo"><img src="assets/hikids-logo.jpg" alt="Hi, Kids! — студия английского языка" /></div>
+      <h1>Hi, Kids!</h1>
+      <p class="welcome">Добро пожаловать!</p>
+      <p class="sub">Английский, шахматы, ИЗО и подготовка к школе — всё в одном уютном месте, в Краснодаре.</p>
+      <div class="hero-actions">
+        <a href="#contacts" class="btn btn-primary">Записаться на пробный урок</a>
+        <a href="#courses" class="btn btn-ghost">Узнать расписание</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-chips reveal d2">
+    <span class="hchip"><span class="ico">🎁</span> Первое занятие бесплатно</span>
+    <span class="hchip"><span class="ico">🧒</span> От 3 лет до взрослых</span>
+    <span class="hchip"><span class="ico">👥</span> Мини-группы 6–8 детей</span>
+    <span class="hchip"><span class="ico">♟️</span> Шахматы и ИЗО</span>
+  </div>
+</section>
+
+<svg class="wave-divider" viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" d="M0,40 C240,90 480,90 720,55 C960,20 1200,20 1440,55 L1440,90 L0,90 Z"></path></svg>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about" data-screen-label="О нас">
+  <div class="wrap about-grid">
+    <div class="about-visual reveal">
+      <div class="mini-stat"><div class="num" data-count="2024">0</div><div class="lbl">работаем с сентября</div></div>
+      <div class="mini-stat"><div class="num" data-count="5" data-suffix="">0</div><div class="lbl">направлений развития</div></div>
+      <div class="mini-stat"><div class="num" data-count="2">0</div><div class="lbl">адреса в Краснодаре</div></div>
+      <div class="mini-stat"><div class="num" data-count="8" data-suffix="">0</div><div class="lbl">детей max в группе</div></div>
+    </div>
+    <div class="about-text reveal d2">
+      <span class="eyebrow">👋 Знакомьтесь</span>
+      <h2 class="section-title">Мы — Hi, Kids!</h2>
+      <p>Небольшая, но очень уютная студия в сердце Краснодара. С сентября 2024 года мы помогаем детям открывать мир знаний через <strong>английский язык, шахматы, изобразительное искусство</strong> и подготовку к школе.</p>
+      <p>Каждый ребёнок у нас — в центре внимания. Небольшие группы, опытные педагоги и атмосфера, в которой <strong>хочется учиться</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<svg class="wave-divider flip" viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" d="M0,40 C240,90 480,90 720,55 C960,20 1200,20 1440,55 L1440,90 L0,90 Z"></path></svg>
+
+<!-- ===== COURSES ===== -->
+<section class="courses" id="courses" data-screen-label="Направления">
+  <img class="scatter-kid sk-1" src="assets/photo-tr-sm.png" alt="" aria-hidden="true" />
+  <div class="wrap center">
+    <span class="eyebrow reveal">🚀 Наши направления</span>
+    <h2 class="section-title reveal">Чем мы занимаемся</h2>
+    <p class="section-lead reveal">Четыре направления для гармоничного развития — выбирайте одно или совмещайте со скидкой 10%.</p>
+  </div>
+  <div class="wrap courses-grid">
+    <div class="course-card c-blue reveal d1">
+      <div class="course-icon">🇬🇧</div>
+      <h3>Английский язык</h3>
+      <div class="course-meta">От 3 лет · группы и индивидуально</div>
+      <ul>
+        <li>Группы от 3 лет до взрослых</li>
+        <li>Абонемент: 4 занятия по 60 мин</li>
+        <li>1 раз в неделю</li>
+        <li>Бесплатное пробное занятие</li>
+      </ul>
+      <div class="course-price">от 6 500 ₽<span>за абонемент (4 занятия)</span></div>
+      <a href="#contacts" class="btn">Записаться</a>
+    </div>
+    <div class="course-card c-green reveal d2">
+      <div class="course-icon">📚</div>
+      <h3>Подготовка к школе</h3>
+      <div class="course-meta">5–7 лет · дошкольная подготовка</div>
+      <ul>
+        <li>Подготовка детей к школе</li>
+        <li>Развитие логики и речи</li>
+        <li>Мелкая моторика</li>
+        <li>Уверенность перед 1 классом</li>
+      </ul>
+      <div class="course-price">Узнать цену<span>по абонементу</span></div>
+      <a href="#contacts" class="btn">Записаться</a>
+    </div>
+    <div class="course-card c-yellow reveal d3">
+      <div class="course-icon">♟️</div>
+      <h3>Шахматы</h3>
+      <div class="course-meta">От 5 лет · мини-группы 5–8 чел.</div>
+      <ul>
+        <li>Пятницы 18:00–19:00 / 19:00–20:00</li>
+        <li>Логика и концентрация</li>
+        <li>Стратегическое мышление</li>
+        <li>Бесплатное пробное занятие</li>
+      </ul>
+      <div class="course-price">3 000 ₽<span>абонемент (4 занятия)</span></div>
+      <a href="#contacts" class="btn">Записаться</a>
+    </div>
+    <div class="course-card c-coral reveal d4">
+      <div class="course-icon">🎨</div>
+      <h3>ИЗО</h3>
+      <div class="course-meta">3–9 лет · преподаватель Ирина</div>
+      <ul>
+        <li>Младшая (3–6) и старшая (6–9)</li>
+        <li>Гуашь, акрил, холст, аппликация</li>
+        <li>Мастер-классы по выходным</li>
+        <li>Все материалы включены</li>
+      </ul>
+      <div class="course-price">от 500 ₽<span>мастер-класс с человека</span></div>
+      <a href="#contacts" class="btn">Записаться</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY ===== -->
+<svg class="wave-divider" viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" d="M0,55 C360,10 720,10 1080,45 C1260,62 1350,62 1440,50 L1440,90 L0,90 Z"></path></svg>
+<section class="why" id="why" data-screen-label="Почему мы">
+  <img class="scatter-kid sk-2" src="assets/photo-bl-sm.png" alt="" aria-hidden="true" />
+  <div class="wrap center">
+    <span class="eyebrow reveal">💙 Почему родители выбирают нас</span>
+    <h2 class="section-title reveal">Почему мы</h2>
+  </div>
+  <div class="wrap why-grid">
+    <div class="why-card reveal d1"><span class="ico">👥</span><h4>Мини-группы</h4><p>Не более 6–8 детей — каждый ребёнок получает внимание педагога.</p></div>
+    <div class="why-card reveal d2"><span class="ico">🎓</span><h4>Опытные педагоги</h4><p>Любящие своё дело преподаватели, которым доверяют родители.</p></div>
+    <div class="why-card reveal d3"><span class="ico">🎁</span><h4>Первое занятие бесплатно</h4><p>Приходите познакомиться без обязательств — посмотрите, как всё устроено.</p></div>
+    <div class="why-card reveal d1"><span class="ico">💰</span><h4>Скидка 10%</h4><p>При записи на второй курс или направление действует приятная скидка.</p></div>
+    <div class="why-card reveal d2"><span class="ico">📍</span><h4>Два адреса</h4><p>Сормовская в ЖК «Элегант» и п. Знаменский — удобно добираться.</p></div>
+    <div class="why-card reveal d3"><span class="ico">🎨</span><h4>Все материалы включены</h4><p>На мастер-классах ИЗО ничего приносить не нужно — мы всё подготовим.</p></div>
+  </div>
+</section>
+
+<!-- ===== SUMMER ===== -->
+<section class="summer" id="summer" data-screen-label="Летний клуб">
+  <div class="wrap">
+    <div class="summer-banner reveal">
+      <span class="eyebrow">☀️ Сезонная программа</span>
+      <h2>Летний клуб Hi, Kids!</h2>
+      <p class="tagline">Самые крутые каникулы начинаются здесь!</p>
+      <div class="summer-info">
+        <span class="pill">📅 С 1 июня · Пн–Пт</span>
+        <span class="pill">🕘 9:00–14:00</span>
+        <span class="pill">📍 ул. Сормовская 1/3 к1, ЖК «Элегант»</span>
+      </div>
+      <ul class="summer-list">
+        <li><span class="check">✓</span><span><strong>English Time</strong> — прокачиваем язык без скучных учебников</span></li>
+        <li><span class="check">✓</span><span><strong>Творческие мастер-классы</strong> — рисуем, лепим, создаём</span></li>
+        <li><span class="check">✓</span><span><strong>Квесты и активные игры</strong> — двигаемся и веселимся</span></li>
+        <li><span class="check">✓</span><span><strong>Вкусный перекус</strong> — уже включён в стоимость 🍎</span></li>
+      </ul>
+      <div class="summer-cta">
+        <a href="#contacts" class="btn btn-white">Записаться в летний клуб</a>
+        <span class="promo">🤝 «Приведи друга» — скидка 5% каждому! Мест ограничено.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICES ===== -->
+<section class="prices" id="prices" data-screen-label="Цены">
+  <div class="wrap center">
+    <span class="eyebrow reveal">💰 Прозрачные цены</span>
+    <h2 class="section-title reveal">Стоимость занятий</h2>
+    <p class="section-lead reveal">Никаких скрытых платежей. Первое занятие по любому направлению — бесплатно.</p>
+  </div>
+  <div class="wrap price-grid">
+    <div class="price-card p-blue reveal d1">
+      <span class="price-badge">🔥 выгода</span>
+      <div class="p-icon">🇬🇧</div>
+      <h4>Английский язык</h4>
+      <p class="p-type">Абонемент · 4 занятия</p>
+      <div class="price-old">7 000 ₽</div>
+      <div class="price-now">6 500 ₽</div>
+      <p class="price-note">+ скидка 10% при записи на 2-й курс</p>
+    </div>
+    <div class="price-card p-yellow reveal d2">
+      <div class="p-icon">♟️</div>
+      <h4>Шахматы</h4>
+      <p class="p-type">Абонемент · 4 занятия</p>
+      <div class="price-now">3 000 ₽</div>
+      <p class="price-note">1 раз в неделю, по 60 минут</p>
+    </div>
+    <div class="price-card p-coral reveal d3">
+      <div class="p-icon">🎨</div>
+      <h4>Мастер-класс ИЗО</h4>
+      <p class="p-type">Разовое занятие</p>
+      <div class="price-now">от 500 ₽</div>
+      <p class="price-note">Все материалы включены ✅</p>
+    </div>
+    <div class="price-card p-green reveal d4">
+      <div class="p-icon">☀️</div>
+      <h4>Летний клуб</h4>
+      <p class="p-type">9:00–14:00, Пн–Пт</p>
+      <div class="price-now">Уточняйте</div>
+      <p class="price-note">Полезный перекус включён</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WORKSHOPS ===== -->
+<svg class="wave-divider flip" viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" d="M0,40 C240,90 480,90 720,55 C960,20 1200,20 1440,55 L1440,90 L0,90 Z"></path></svg>
+<section class="workshops" id="workshops" data-screen-label="Мастер-классы">
+  <div class="wrap">
+    <div class="workshop-box reveal">
+      <div>
+        <span class="eyebrow">🎨 Каждые выходные</span>
+        <h2>Творческие мастер-классы по ИЗО</h2>
+        <p>Регулярные мастер-классы для детей 3–9 лет каждые выходные. Работаем с гуашью, акрилом, холстом и аппликацией — а все материалы уже включены в стоимость.</p>
+        <p style="font-weight:700;color:var(--ink);">Стоимость: 500–750 ₽ с человека · </p>
+        <div class="workshop-feats">
+          <span>Гуашь</span><span>Акрил</span><span>Холст</span><span>Аппликация</span>
+        </div>
+        <a href="#contacts" class="btn btn-coral" style="margin-top:22px;">Записаться на мастер-класс</a>
+      </div>
+      <div class="workshop-art">
+        <div class="wa wa1"><span class="big">🖌️</span><span>Гуашь</span></div>
+        <div class="wa wa2"><span class="big">🎨</span><span>Акрил</span></div>
+        <div class="wa wa3"><span class="big">🖼️</span><span>Холст</span></div>
+        <div class="wa wa4"><span class="big">✂️</span><span>Аппликация</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LOCATION ===== -->
+<section class="location" id="location" data-screen-label="Как нас найти">
+  <div class="wrap center">
+    <span class="eyebrow reveal">📍 Адреса</span>
+    <h2 class="section-title reveal">Как нас найти</h2>
+  </div>
+  <div class="wrap loc-grid">
+    <div class="reveal">
+      <div class="addr-card">
+        <div class="pin">📍</div>
+        <div><h4>Краснодар, центр</h4><p>ул. Сормовская 1/3 к1, ЖК «Элегант»</p></div>
+      </div>
+      <div class="addr-card">
+        <div class="pin">📍</div>
+        <div><h4>п. Знаменский</h4><p>ул. Природная 10б</p></div>
+      </div>
+      <div class="addr-card" style="background:rgba(6,214,160,0.07);border-color:rgba(6,214,160,0.25);">
+        <div class="pin" style="background:rgba(6,214,160,0.15);">📞</div>
+        <div><h4>Звоните в любое время</h4><p><a href="tel:+79180296748">+7 (918) 029-67-48</a> · <a href="tel:+79528753000">+7 952 875 3000</a></p></div>
+      </div>
+    </div>
+    <div class="map-frame reveal d2">
+      <iframe src="https://yandex.ru/map-widget/v1/?ll=38.9770%2C45.0355&z=16&pt=38.9770,45.0355,pm2rdm" loading="lazy" title="Карта — ул. Сормовская 1/3 к1, Краснодар"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTS ===== -->
+<svg class="wave-divider" viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path fill="#F7F9FF" d="M0,40 C240,90 480,90 720,55 C960,20 1200,20 1440,55 L1440,90 L0,90 Z"></path></svg>
+<section class="contacts" id="contacts" data-screen-label="Контакты">
+  <img class="scatter-kid sk-3" src="assets/photo-br-sm.png" alt="" aria-hidden="true" />
+  <div class="wrap center">
+    <span class="eyebrow reveal">✉️ Запишитесь сегодня</span>
+    <h2 class="section-title reveal">Давайте познакомимся</h2>
+    <p class="section-lead reveal">Оставьте заявку — и мы подберём удобное время для бесплатного пробного занятия.</p>
+  </div>
+  <div class="wrap contacts-grid">
+    <div class="contact-actions reveal">
+      <a href="tel:+79180296748" class="contact-btn">
+        <div class="ci ci-blue">📲</div>
+        <div><div class="ct">Позвонить или WhatsApp</div><div class="cv">+7 (918) 029-67-48</div></div>
+      </a>
+      <a href="https://t.me/hikids01" target="_blank" rel="noopener" class="contact-btn">
+        <div class="ci ci-green">💬</div>
+        <div><div class="ct">Написать в Telegram</div><div class="cv">@hikids01</div></div>
+      </a>
+      <a href="https://t.me/hikids2024" target="_blank" rel="noopener" class="contact-btn">
+        <div class="ci ci-coral">📣</div>
+        <div><div class="ct">Наш Telegram-канал</div><div class="cv">t.me/hikids2024</div></div>
+      </a>
+      <a href="tel:+79528753000" class="contact-btn">
+        <div class="ci ci-yellow">☎️</div>
+        <div><div class="ct">Второй номер</div><div class="cv">+7 952 875 3000</div></div>
+      </a>
+    </div>
+    <div class="form-card reveal d2">
+      <h3>Заявка на пробный урок 🎁</h3>
+      <p class="fc-sub">Заполните форму — это займёт меньше минуты.</p>
+      <form id="leadForm" novalidate>
+        <div class="field" id="f-name">
+          <label for="childName">Имя ребёнка</label>
+          <input type="text" id="childName" placeholder="Например, Соня" />
+          <div class="err-msg">Пожалуйста, укажите имя</div>
+        </div>
+        <div class="field" id="f-age">
+          <label for="childAge">Возраст</label>
+          <input type="number" id="childAge" min="1" max="99" placeholder="Сколько лет ребёнку" />
+          <div class="err-msg">Укажите возраст</div>
+        </div>
+        <div class="field" id="f-phone">
+          <label for="phone">Телефон</label>
+          <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" />
+          <div class="err-msg">Введите корректный номер телефона</div>
+        </div>
+        <div class="field" id="f-course">
+          <label for="course">Направление</label>
+          <select id="course">
+            <option value="">Выберите направление</option>
+            <option>🇬🇧 Английский язык</option>
+            <option>📚 Подготовка к школе</option>
+            <option>♟️ Шахматы</option>
+            <option>🎨 ИЗО</option>
+            <option>☀️ Летний клуб</option>
+            <option>Пока не решили</option>
+          </select>
+          <div class="err-msg">Выберите направление</div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top:8px;">Отправить заявку</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/hikids-logo.jpg" alt="Hi, Kids!" />
+          <span class="fb-name">Hi, Kids!</span>
+        </div>
+        <p>Студия английского языка и клуб развития для детей в Краснодаре. Английский, шахматы, ИЗО и подготовка к школе с сентября 2024 года.</p>
+      </div>
+      <div>
+        <h5>Навигация</h5>
+        <ul>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#courses">Направления</a></li>
+          <li><a href="#summer">Летний клуб</a></li>
+          <li><a href="#prices">Цены</a></li>
+          <li><a href="#workshops">Мастер-классы</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Контакты</h5>
+        <ul>
+          <li><a href="tel:+79180296748">+7 (918) 029-67-48</a></li>
+          <li><a href="tel:+79528753000">+7 952 875 3000</a></li>
+          <li><a href="https://t.me/hikids01" target="_blank" rel="noopener">Telegram @hikids01</a></li>
+          <li>ул. Сормовская 1/3 к1, ЖК «Элегант»</li>
+          <li>п. Знаменский, ул. Природная 10б</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024–2026 Hi, Kids! Краснодар</span>
+      <span>Сделано с 💙 для маленьких учеников</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="m-emoji">🎉</div>
+    <h3>Спасибо!</h3>
+    <p>Мы получили вашу заявку и свяжемся с вами в ближайшее время, чтобы подобрать удобное время для пробного занятия.</p>
+    <button class="btn btn-primary" id="modalClose">Отлично!</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ---- Sticky nav ---- */
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 20);
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  /* ---- Burger / mobile menu ---- */
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('mobileMenu');
+  const toggleMenu = (force) => {
+    const open = force !== undefined ? force : !burger.classList.contains('open');
+    burger.classList.toggle('open', open);
+    menu.classList.toggle('open', open);
+  };
+  burger.addEventListener('click', () => toggleMenu());
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+
+  /* ---- Reveal on scroll ---- */
+  const revealEls = document.querySelectorAll('.reveal');
+  const supportsIO = 'IntersectionObserver' in window;
+  if(supportsIO){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    revealEls.forEach(el => io.observe(el));
+  }
+  // Reveal elements already in the viewport on load — instantly, no transition (avoids stuck fades in throttled/offscreen contexts)
+  const revealInView = () => {
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    revealEls.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if(r.top < vh && r.bottom > 0){ el.style.transition='none'; el.classList.add('in'); }
+    });
+  };
+  revealInView();
+  window.addEventListener('load', revealInView);
+  // Last-resort failsafe: never leave anything permanently hidden
+  setTimeout(() => revealEls.forEach(el => { if(getComputedStyle(el).opacity !== '1'){ el.style.transition='none'; el.classList.add('in'); } }), 1500);
+
+  /* ---- Animated counters ---- */
+  const counters = document.querySelectorAll('[data-count]');
+  const runCounter = (el) => {
+    if(el.dataset.done) return; el.dataset.done = '1';
+    const target = +el.dataset.count;
+    const dur = 1400, start = performance.now();
+    const tick = (now) => {
+      const p = Math.min((now - start)/dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased);
+      if(p < 1) requestAnimationFrame(tick); else el.textContent = target;
+    };
+    requestAnimationFrame(tick);
+  };
+  if(supportsIO){
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting){ runCounter(e.target); cio.unobserve(e.target); } });
+    }, {threshold:0.5});
+    counters.forEach(c => cio.observe(c));
+  }
+  setTimeout(() => counters.forEach(runCounter), 1500);
+
+  /* ---- Form validation + modal ---- */
+  const form = document.getElementById('leadForm');
+  const modal = document.getElementById('modal');
+  const setErr = (id, on) => document.getElementById(id).classList.toggle('error', on);
+  form.addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    const name = document.getElementById('childName').value.trim();
+    const age = document.getElementById('childAge').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const course = document.getElementById('course').value;
+    const digits = phone.replace(/\D/g,'');
+    let ok = true;
+    setErr('f-name', !name); if(!name) ok = false;
+    setErr('f-age', !age); if(!age) ok = false;
+    const phoneBad = digits.length < 10; setErr('f-phone', phoneBad); if(phoneBad) ok = false;
+    setErr('f-course', !course); if(!course) ok = false;
+    if(!ok) return;
+    modal.classList.add('open');
+    form.reset();
+  });
+  ['childName','childAge','phone','course'].forEach((id,i) => {
+    const fids = ['f-name','f-age','f-phone','f-course'];
+    document.getElementById(id).addEventListener('input', () => document.getElementById(fids[i]).classList.remove('error'));
+  });
+  const closeModal = () => modal.classList.remove('open');
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(); });
+})();
+</script>
+</body>
+</html>
