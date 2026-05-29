@@ -114,10 +114,12 @@
     background:#fff;box-shadow:0 12px 30px rgba(26,31,54,0.12);
     transform:translateY(-120%);transition:transform .35s cubic-bezier(.22,1,.36,1);
     padding:14px 24px 26px;
+    overflow:hidden;
   }
   .mobile-menu.open{transform:translateY(0);}
-  .mobile-menu a{display:block;font-family:'Nunito',sans-serif;font-weight:700;font-size:18px;padding:13px 8px;border-bottom:1px solid #eef1f8;}
-  .mobile-menu .btn{margin-top:18px;}
+  .mobile-menu a{position:relative;z-index:2;display:block;font-family:'Nunito',sans-serif;font-weight:700;font-size:18px;padding:13px 8px;border-bottom:1px solid #eef1f8;}
+  .mobile-menu .btn{position:relative;z-index:2;margin-top:18px;}
+  .mobile-menu .menu-girl{position:absolute;right:-15px;bottom:-15px;width:clamp(120px, 30vw, 150px);height:auto;z-index:1;pointer-events:none;filter:drop-shadow(0 8px 20px rgba(26,31,54,0.12));animation:float 6s ease-in-out infinite;}
 
   /* ============ HERO ============ */
   .hero{padding:calc(var(--nav-h) + 28px) 0 64px;overflow:hidden;}
@@ -394,6 +396,7 @@
   <a href="#workshops">Мастер-классы</a>
   <a href="#location">Как нас найти</a>
   <a href="#contacts" class="btn btn-primary btn-block">Записаться на пробный урок</a>
+  <img class="menu-girl" src="assets/photo-br-sm.png" alt="" aria-hidden="true" />
 </div>
 
 <!-- ===== HERO ===== -->
