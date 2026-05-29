@@ -337,8 +337,11 @@
     .hero-kids{position:absolute;inset:0;z-index:1;}
     .hero-center{position:relative;z-index:10;}
     .k-tr,.k-bl,.k-br{display:none;}
-    .k-tl{display:block;width:clamp(170px,48vw,240px);top:50px;left:-45px;right:auto !important;bottom:auto;z-index:1;animation:float 6s ease-in-out infinite;opacity:1 !important;transform:none !important;}
-    .scatter-kid{display:block;}
+    .k-tl{display:block;width:clamp(220px,60vw,300px);top:10px;left:-35px;right:auto !important;bottom:auto;z-index:1;animation:float 6s ease-in-out infinite;opacity:1 !important;transform:none !important;}
+    .scatter-kid{display:block;z-index:0;opacity:0.45;}
+    .sk-1{top:-30px;right:-10px;width:150px;}
+    .sk-2{top:-20px;left:50%;transform:translateX(-30%);width:180px;}
+    .sk-3{top:-40px;left:50%;transform:translateX(-50%);width:160px;}
   }
   @media(max-width:768px){
     nav.links,.nav-cta{display:none;}
@@ -452,7 +455,7 @@
 
 <!-- ===== COURSES ===== -->
 <section class="courses" id="courses" data-screen-label="Направления">
-  <img class="scatter-kid sk-1" src="assets/photo-tr-sm.png" alt="" aria-hidden="true" />
+  <img class="scatter-kid sk-1" src="assets/photo-boy-sm.png" alt="" aria-hidden="true" />
   <div class="wrap center">
     <span class="eyebrow reveal">🚀 Наши направления</span>
     <h2 class="section-title reveal">Чем мы занимаемся</h2>
