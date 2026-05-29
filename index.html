@@ -46,7 +46,7 @@
   img{max-width:100%;display:block;}
   section{position:relative;}
 
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .wrap{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:0 24px;}
 
   /* ============ EYEBROW + HEADINGS ============ */
   .eyebrow{
@@ -332,9 +332,10 @@
   /* mobile: hero keeps ONLY the top-left girl (beside the content); the other three scatter down the page */
   @media(max-width:720px){
     .hero-stage{min-height:0;}
-    .hero-kids{position:absolute;inset:0;}
+    .hero-kids{position:absolute;inset:0;z-index:1;}
+    .hero-center{position:relative;z-index:10;}
     .k-tr,.k-bl,.k-br{display:none;}
-    .k-tl{display:block;width:clamp(124px,36vw,168px);top:84px;left:-30px;bottom:auto;z-index:1;animation:float 6s ease-in-out infinite;}
+    .k-tl{display:block;width:clamp(170px,48vw,240px);top:50px;left:-45px;bottom:auto;z-index:1;animation:float 6s ease-in-out infinite;}
     .scatter-kid{display:block;}
   }
   @media(max-width:768px){
