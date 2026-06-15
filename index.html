@@ -838,11 +838,17 @@
   }
   setTimeout(() => counters.forEach(runCounter), 1500);
 
-  /* ---- Form validation + modal ---- */
+  /* ---- Form validation + modal + Telegram Send ---- */
   const form = document.getElementById('leadForm');
   const modal = document.getElementById('modal');
+  const submitBtn = form.querySelector('button[type="submit"]');
   const setErr = (id, on) => document.getElementById(id).classList.toggle('error', on);
-  form.addEventListener('submit', (ev) => {
+
+  // Настройки Telegram
+  const TELEGRAM_BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';
+  const TELEGRAM_CHAT_ID = 'YOUR_CHAT_ID_HERE';
+
+  form.addEventListener('submit', async (ev) => {
     ev.preventDefault();
     const name = document.getElementById('childName').value.trim();
     const age = document.getElementById('childAge').value.trim();
@@ -855,8 +861,48 @@
     const phoneBad = digits.length < 10; setErr('f-phone', phoneBad); if(phoneBad) ok = false;
     setErr('f-course', !course); if(!course) ok = false;
     if(!ok) return;
-    modal.classList.add('open');
-    form.reset();
+
+    // Блокируем кнопку отправки
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Отправка...';
+
+    // Формируем текст сообщения
+    const messageText = `👋 *Новая заявка с сайта!*\n\n` +
+      `👤 *Имя ребенка:* ${name}\n` +
+      `🎂 *Возраст:* ${age} лет\n` +
+      `📞 *Телефон:* ${phone}\n` +
+      `📚 *Направление:* ${course}`;
+
+    try {
+      if (TELEGRAM_BOT_TOKEN !== 'YOUR_BOT_TOKEN_HERE' && TELEGRAM_CHAT_ID !== 'YOUR_CHAT_ID_HERE') {
+        const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            chat_id: TELEGRAM_CHAT_ID,
+            text: messageText,
+            parse_mode: 'Markdown'
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('Telegram API responded with error status');
+        }
+      } else {
+        console.warn('Telegram credentials are not set. Message not sent:', messageText);
+      }
+    } catch (err) {
+      console.error('Ошибка отправки в Telegram:', err);
+    } finally {
+      // Разблокируем кнопку и показываем модальное окно «Спасибо!»
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalBtnText;
+      modal.classList.add('open');
+      form.reset();
+    }
   });
   ['childName','childAge','phone','course'].forEach((id,i) => {
     const fids = ['f-name','f-age','f-phone','f-course'];
